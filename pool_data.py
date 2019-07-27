@@ -48,7 +48,30 @@ def insert_data(tstamp, json_data):
 		df[['hashrate1m', 'hashrate5m', 'hashrate1hr', 'hashrate1d', 'hashrate7d']] \ 
 			.applymap(lambda x: clean_hashrate(x))
 	#create table if not exists
-	conn = sqlite3.connect(
+	conn = sqlite3.connect(DB_FILE)
+	c = conn.cursor()
+	c.execute("CREATE TABLE IF NOT EXISTS {} ( \
+			hashrate1m BIGINT NOT NULL,\
+			hashrate5m BIGINT NOT NULL,\
+			hashrate1hr BIGINT NOT NULL,\
+			hashrate1d BIGINT NOT NULL,\
+			hashrate7d BIGINT NOT NULL,\
+			lastshare BIGINT NOT NULL,\
+			workers INT NOT NULL,\
+			shares BIGINT NOT NULL,\
+			bestshare NUMERIC NOT NULL,\
+			lns NUMERIC NOT NULL,\
+			luck NUMERIC NOT NULL,\
+			accumulated NUMERIC,\
+			postponed NUMERIC,\
+			herp NUMERIC NOT NULL,\
+			derp NUMERIC NOT NULL,\
+			worker TEXT)".format(TABLE_NAME))
+
+
+			
+
+
 	#insert data
 
 
