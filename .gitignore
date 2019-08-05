@@ -1,0 +1,5 @@
+#Dont track
+*.db
+*.swp
+*.swn
+*.swo
