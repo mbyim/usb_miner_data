@@ -40,7 +40,7 @@ def insert_to_db():
                thr TEXT,\
                sharehash TEXT,\
                sharedata TEXT);") 
-    c.execute("CREATE UNIQUE INDEX IF NOT EXISTS idx_tstamp_sharehash ON shares(timestamp, sharehash);")
+    c.execute("CREATE UNIQUE INDEX IF NOT EXISTS idx_sharehash ON shares(sharehash);")
     fieldnames = ['timestamp', 'disposition', 'target', 'pool', 'dev', 'thr', 'sharehash', 'sharedata']
     rows = [] 
     with open(SLOG_PATH, 'r') as shares:
